@@ -19,14 +19,14 @@ final class PointInTimeManager
 
         $response = $this->client->createPointInTime($params);
 
-        return $response['id'];
+        return $response['pit_id'];
     }
 
     public function close(string $pointInTimeId): self
     {
         $this->client->deletePointInTime([
             'body' => [
-                'id' => $pointInTimeId,
+                'pit_id' => $pointInTimeId,
             ],
         ]);
 
