@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Adapter\Search;
+namespace OpenSearch\Adapter\Search;
 
 use ArrayAccess;
-use Elastic\Adapter\Documents\Document;
 use Illuminate\Support\Collection;
+use OpenSearch\Adapter\Documents\Document;
 
 final class Hit implements ArrayAccess
 {
@@ -49,7 +49,7 @@ final class Hit implements ArrayAccess
         );
     }
 
-    public function explanation(): ?Explanation
+    public function explaination(): ?Explanation
     {
         return isset($this->rawResult['_explanation']) ? new Explanation($this->rawResult['_explanation']) : null;
     }

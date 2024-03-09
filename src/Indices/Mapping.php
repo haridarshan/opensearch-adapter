@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Adapter\Indices;
+namespace OpenSearch\Adapter\Indices;
 
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
@@ -56,10 +56,6 @@ final class Mapping implements Arrayable
     private ?bool $isSourceEnabled;
     private MappingProperties $properties;
     private array $dynamicTemplates = [];
-    /**
-     * @var string|bool|null
-     */
-    private $dynamic;
 
     public function __construct()
     {
@@ -94,16 +90,6 @@ final class Mapping implements Arrayable
         return $this;
     }
 
-    /**
-     * @param string|bool $dynamic
-     */
-    public function dynamic($dynamic): self
-    {
-        $this->dynamic = $dynamic;
-
-        return $this;
-    }
-
     public function dynamicTemplate(string $name, array $parameters): self
     {
         $this->dynamicTemplates[] = [$name => $parameters];
@@ -131,10 +117,6 @@ final class Mapping implements Arrayable
             $mapping['_source'] = [
                 'enabled' => $this->isSourceEnabled,
             ];
-        }
-
-        if(isset($this->dynamic)) {
-            $mapping['dynamic'] = $this->dynamic;
         }
 
         if (!empty($properties)) {

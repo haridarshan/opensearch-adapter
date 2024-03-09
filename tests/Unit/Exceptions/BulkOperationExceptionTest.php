@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Adapter\Tests\Unit\Exceptions;
+namespace OpenSearch\Adapter\Tests\Unit\Exceptions;
 
-use Elastic\Adapter\Exceptions\BulkOperationException;
+use OpenSearch\Adapter\Exceptions\BulkOperationException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Elastic\Adapter\Exceptions\BulkOperationException
+ * @covers \OpenSearch\Adapter\Exceptions\BulkOperationException
  */
 final class BulkOperationExceptionTest extends TestCase
 {

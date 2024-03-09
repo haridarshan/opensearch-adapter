@@ -1,27 +1,27 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Adapter\Tests\Unit\Indices;
+namespace OpenSearch\Adapter\Tests\Unit\Indices;
 
-use Elastic\Adapter\Indices\Alias;
-use Elastic\Adapter\Indices\Index;
-use Elastic\Adapter\Indices\IndexManager;
-use Elastic\Adapter\Indices\Mapping;
-use Elastic\Adapter\Indices\Settings;
-use Elastic\Client\ClientBuilderInterface;
-use Elastic\Elasticsearch\Client;
-use Elastic\Elasticsearch\Endpoints\Indices;
+use OpenSearch\Adapter\Indices\Alias;
+use OpenSearch\Adapter\Indices\Index;
+use OpenSearch\Adapter\Indices\IndexManager;
+use OpenSearch\Adapter\Indices\Mapping;
+use OpenSearch\Adapter\Indices\Settings;
+use OpenSearch\Laravel\Client\ClientBuilderInterface;
+use OpenSearch\Client;
+use OpenSearch\Endpoints\Indices;
 use Elastic\Elasticsearch\Response\Elasticsearch;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Elastic\Adapter\Indices\IndexManager
+ * @covers \OpenSearch\Adapter\Indices\IndexManager
  *
- * @uses   \Elastic\Adapter\Indices\Alias
- * @uses   \Elastic\Adapter\Indices\Index
- * @uses   \Elastic\Adapter\Indices\Mapping
- * @uses   \Elastic\Adapter\Indices\MappingProperties
- * @uses   \Elastic\Adapter\Indices\Settings
+ * @uses   \OpenSearch\Adapter\Indices\Alias
+ * @uses   \OpenSearch\Adapter\Indices\Index
+ * @uses   \OpenSearch\Adapter\Indices\Mapping
+ * @uses   \OpenSearch\Adapter\Indices\MappingProperties
+ * @uses   \OpenSearch\Adapter\Indices\Settings
  */
 class IndexManagerTest extends TestCase
 {

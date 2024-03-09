@@ -1,29 +1,28 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Adapter\Tests\Unit\Documents;
+namespace OpenSearch\Adapter\Tests\Unit\Documents;
 
-use Elastic\Adapter\Documents\Document;
-use Elastic\Adapter\Documents\DocumentManager;
-use Elastic\Adapter\Documents\Routing;
-use Elastic\Adapter\Exceptions\BulkOperationException;
-use Elastic\Adapter\Search\Hit;
-use Elastic\Adapter\Search\SearchParameters;
-use Elastic\Client\ClientBuilderInterface;
-use Elastic\Elasticsearch\Client;
-use Elastic\Elasticsearch\Response\Elasticsearch;
+use OpenSearch\Adapter\Documents\Document;
+use OpenSearch\Adapter\Documents\DocumentManager;
+use OpenSearch\Adapter\Documents\Routing;
+use OpenSearch\Adapter\Exceptions\BulkOperationException;
+use OpenSearch\Adapter\Search\Hit;
+use OpenSearch\Adapter\Search\SearchParameters;
+use OpenSearch\Laravel\Client\ClientBuilderInterface;
+use OpenSearch\Client;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**
- * @covers \Elastic\Adapter\Documents\DocumentManager
+ * @covers \OpenSearch\Adapter\Documents\DocumentManager
  *
- * @uses   \Elastic\Adapter\Documents\Document
- * @uses   \Elastic\Adapter\Documents\Routing
- * @uses   \Elastic\Adapter\Exceptions\BulkOperationException
- * @uses   \Elastic\Adapter\Search\Hit
- * @uses   \Elastic\Adapter\Search\SearchParameters
- * @uses   \Elastic\Adapter\Search\SearchResult
+ * @uses   \OpenSearch\Adapter\Documents\Document
+ * @uses   \OpenSearch\Adapter\Documents\Routing
+ * @uses   \OpenSearch\Adapter\Exceptions\BulkOperationException
+ * @uses   \OpenSearch\Adapter\Search\Hit
+ * @uses   \OpenSearch\Adapter\Search\SearchParameters
+ * @uses   \OpenSearch\Adapter\Search\SearchResult
  */
 final class DocumentManagerTest extends TestCase
 {

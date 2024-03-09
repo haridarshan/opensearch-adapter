@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Adapter\Tests\Unit\Search;
+namespace OpenSearch\Adapter\Tests\Unit\Search;
 
-use Elastic\Adapter\Search\Explanation;
+use OpenSearch\Adapter\Search\Explanation;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Elastic\Adapter\Search\Explanation
+ * @covers \OpenSearch\Adapter\Search\Explanation
  */
 final class ExplanationTest extends TestCase
 {

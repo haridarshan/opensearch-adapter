@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Adapter\Tests\Unit\Search;
+namespace OpenSearch\Adapter\Tests\Unit\Search;
 
-use Elastic\Adapter\Search\PointInTimeManager;
-use Elastic\Client\ClientBuilderInterface;
-use Elastic\Elasticsearch\Client;
+use OpenSearch\Adapter\Search\PointInTimeManager;
+use OpenSearch\Laravel\Client\ClientBuilderInterface;
+use OpenSearch\Client;
 use Elastic\Elasticsearch\Response\Elasticsearch;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Elastic\Adapter\Search\PointInTimeManager
+ * @covers \OpenSearch\Adapter\Search\PointInTimeManager
  */
 final class PointInTimeManagerTest extends TestCase
 {

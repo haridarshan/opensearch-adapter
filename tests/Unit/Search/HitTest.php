@@ -1,20 +1,20 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Adapter\Tests\Unit\Search;
+namespace OpenSearch\Adapter\Tests\Unit\Search;
 
-use Elastic\Adapter\Documents\Document;
-use Elastic\Adapter\Search\Explanation;
-use Elastic\Adapter\Search\Highlight;
-use Elastic\Adapter\Search\Hit;
+use OpenSearch\Adapter\Documents\Document;
+use OpenSearch\Adapter\Search\Explanation;
+use OpenSearch\Adapter\Search\Highlight;
+use OpenSearch\Adapter\Search\Hit;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Elastic\Adapter\Search\Hit
+ * @covers \OpenSearch\Adapter\Search\Hit
  *
- * @uses   \Elastic\Adapter\Documents\Document
- * @uses   \Elastic\Adapter\Search\Highlight
- * @uses   \Elastic\Adapter\Search\Explanation
+ * @uses   \OpenSearch\Adapter\Documents\Document
+ * @uses   \OpenSearch\Adapter\Search\Highlight
+ * @uses   \OpenSearch\Adapter\Search\Explanation
  */
 final class HitTest extends TestCase
 {
