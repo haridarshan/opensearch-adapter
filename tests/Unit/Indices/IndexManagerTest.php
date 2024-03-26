@@ -2,15 +2,15 @@
 
 namespace OpenSearch\Adapter\Tests\Unit\Indices;
 
+use GuzzleHttp\Ring\Future\FutureArrayInterface;
 use OpenSearch\Adapter\Indices\Alias;
 use OpenSearch\Adapter\Indices\Index;
 use OpenSearch\Adapter\Indices\IndexManager;
 use OpenSearch\Adapter\Indices\Mapping;
 use OpenSearch\Adapter\Indices\Settings;
+use OpenSearch\Endpoints\Cat\Indices;
 use OpenSearch\Laravel\Client\ClientBuilderInterface;
 use OpenSearch\Client;
-use OpenSearch\Endpoints\Indices;
-use Elastic\Elasticsearch\Response\Elasticsearch;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -39,7 +39,7 @@ class IndexManagerTest extends TestCase
         $this->indices = $this->createMock(Indices::class);
 
         $client = $this->createMock(Client::class);
-        $client->method('setAsync')->willReturnSelf();
+
         $client->method('indices')->willReturn($this->indices);
 
         $clientBuilder = $this->createMock(ClientBuilderInterface::class);
@@ -80,7 +80,7 @@ class IndexManagerTest extends TestCase
     {
         $indexName = 'foo';
 
-        $response = $this->createMock(Elasticsearch::class);
+        $response = $this->createMock(FutureArrayInterface::class);
         $response->method('asBool')->willReturn(true);
 
         $this->indices
@@ -346,11 +346,10 @@ class IndexManagerTest extends TestCase
         $indexName = 'foo';
         $aliasName = 'bar';
 
-        $response = $this->createMock(Elasticsearch::class);
+        $response = $this->createMock(FutureArrayInterface::class);
 
         $response
             ->expects($this->once())
-            ->method('asArray')
             ->willReturn([
                 $indexName => [
                     'aliases' => [
@@ -383,7 +382,6 @@ class IndexManagerTest extends TestCase
         $defaultIndices->expects($this->never())->method('create');
 
         $defaultClient = $this->createMock(Client::class);
-        $defaultClient->method('setAsync')->willReturnSelf();
         $defaultClient->method('indices')->willReturn($defaultIndices);
 
         $testIndices = $this->createMock(Indices::class);

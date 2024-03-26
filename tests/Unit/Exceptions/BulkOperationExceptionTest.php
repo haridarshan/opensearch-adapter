@@ -66,7 +66,7 @@ final class BulkOperationExceptionTest extends TestCase
         $exception = new BulkOperationException($rawResult);
 
         $this->assertEquals(
-            '1 bulk operation(s) did not complete successfully. Error: document_missing_exception. Reason: [_doc][5]: document missing. Catch the exception and use the Elastic\Adapter\Exceptions\BulkOperationException::rawResult() method to get more details.',
+            '1 bulk operation(s) did not complete successfully. Error: document_missing_exception. Reason: [_doc][5]: document missing. Catch the exception and use the OpenSearch\Adapter\Exceptions\BulkOperationException::rawResult() method to get more details.',
             $exception->getMessage()
         );
     }
@@ -113,7 +113,7 @@ final class BulkOperationExceptionTest extends TestCase
         $exception = new BulkOperationException($rawResult);
 
         $this->assertEquals(
-            '2 bulk operation(s) did not complete successfully. First error: document_missing_exception. Reason: [_doc][5]: document missing. Catch the exception and use the Elastic\Adapter\Exceptions\BulkOperationException::rawResult() method to get more details.',
+            '2 bulk operation(s) did not complete successfully. First error: document_missing_exception. Reason: [_doc][5]: document missing. Catch the exception and use the OpenSearch\Adapter\Exceptions\BulkOperationException::rawResult() method to get more details.',
             $exception->getMessage()
         );
     }
@@ -138,7 +138,7 @@ final class BulkOperationExceptionTest extends TestCase
         $exception = new BulkOperationException($rawResult);
 
         $this->assertEquals(
-            '1 bulk operation(s) did not complete successfully. Catch the exception and use the Elastic\Adapter\Exceptions\BulkOperationException::rawResult() method to get more details.',
+            '1 bulk operation(s) did not complete successfully. Catch the exception and use the OpenSearch\Adapter\Exceptions\BulkOperationException::rawResult() method to get more details.',
             $exception->getMessage()
         );
     }
@@ -154,7 +154,7 @@ final class BulkOperationExceptionTest extends TestCase
         $exception = new BulkOperationException($rawResult);
 
         $this->assertEquals(
-            'One or more did not complete successfully. Catch the exception and use the Elastic\Adapter\Exceptions\BulkOperationException::rawResult() method to get more details.',
+            'One or more did not complete successfully. Catch the exception and use the OpenSearch\Adapter\Exceptions\BulkOperationException::rawResult() method to get more details.',
             $exception->getMessage()
         );
     }

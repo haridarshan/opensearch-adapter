@@ -2,6 +2,7 @@
 
 namespace OpenSearch\Adapter\Tests\Unit\Documents;
 
+use GuzzleHttp\Ring\Future\FutureArrayInterface;
 use OpenSearch\Adapter\Documents\Document;
 use OpenSearch\Adapter\Documents\DocumentManager;
 use OpenSearch\Adapter\Documents\Routing;
@@ -17,11 +18,11 @@ use stdClass;
 /**
  * @covers \OpenSearch\Adapter\Documents\DocumentManager
  *
- * @uses   \OpenSearch\Adapter\Documents\Document
- * @uses   \OpenSearch\Adapter\Documents\Routing
- * @uses   \OpenSearch\Adapter\Exceptions\BulkOperationException
- * @uses   \OpenSearch\Adapter\Search\Hit
- * @uses   \OpenSearch\Adapter\Search\SearchParameters
+ * @uses   Document
+ * @uses   Routing
+ * @uses   BulkOperationException
+ * @uses   Hit
+ * @uses   SearchParameters
  * @uses   \OpenSearch\Adapter\Search\SearchResult
  */
 final class DocumentManagerTest extends TestCase
@@ -38,7 +39,6 @@ final class DocumentManagerTest extends TestCase
         parent::setUp();
 
         $this->client = $this->createMock(Client::class);
-        $this->client->method('setAsync')->willReturnSelf();
 
         $clientBuilder = $this->createMock(ClientBuilderInterface::class);
         $clientBuilder->method('default')->willReturn($this->client);
@@ -62,7 +62,7 @@ final class DocumentManagerTest extends TestCase
                 ],
             ])
             ->willReturn(
-                $this->createMock(Elasticsearch::class)
+                $this->createMock(FutureArrayInterface::class)
             );
 
         $documents = collect([
@@ -87,7 +87,7 @@ final class DocumentManagerTest extends TestCase
                 ],
             ])
             ->willReturn(
-                $this->createMock(Elasticsearch::class)
+                $this->createMock(FutureArrayInterface::class)
             );
 
         $documents = collect([
@@ -113,7 +113,7 @@ final class DocumentManagerTest extends TestCase
                 ],
             ])
             ->willReturn(
-                $this->createMock(Elasticsearch::class)
+                $this->createMock(FutureArrayInterface::class)
             );
 
         $documents = collect([
@@ -142,7 +142,7 @@ final class DocumentManagerTest extends TestCase
                 ],
             ])
             ->willReturn(
-                $this->createMock(Elasticsearch::class)
+                $this->createMock(FutureArrayInterface::class)
             );
 
         $documentIds = ['1', '2'];
@@ -163,7 +163,7 @@ final class DocumentManagerTest extends TestCase
                 ],
             ])
             ->willReturn(
-                $this->createMock(Elasticsearch::class)
+                $this->createMock(FutureArrayInterface::class)
             );
 
         $documentIds = ['1'];
@@ -185,7 +185,7 @@ final class DocumentManagerTest extends TestCase
                 ],
             ])
             ->willReturn(
-                $this->createMock(Elasticsearch::class)
+                $this->createMock(FutureArrayInterface::class)
             );
 
         $documentIds = ['1', '2'];
@@ -235,11 +235,10 @@ final class DocumentManagerTest extends TestCase
 
     public function test_documents_can_be_found(): void
     {
-        $response = $this->createMock(Elasticsearch::class);
+        $response = $this->createMock(FutureArrayInterface::class);
 
         $response
             ->expects($this->once())
-            ->method('asArray')
             ->willReturn([
                 'hits' => [
                     'total' => [
@@ -289,11 +288,10 @@ final class DocumentManagerTest extends TestCase
 
     public function test_exception_is_thrown_when_index_operation_was_unsuccessful(): void
     {
-        $response = $this->createMock(Elasticsearch::class);
+        $response = $this->createMock(FutureArrayInterface::class);
 
         $response
             ->expects($this->once())
-            ->method('asArray')
             ->willReturn([
                 'took' => 0,
                 'errors' => true,
@@ -329,14 +327,12 @@ final class DocumentManagerTest extends TestCase
     public function test_connection_can_be_changed(): void
     {
         $defaultClient = $this->createMock(Client::class);
-        $defaultClient->method('setAsync')->willReturnSelf();
 
         $defaultClient
             ->expects($this->never())
             ->method('bulk');
 
         $testClient = $this->createMock(Client::class);
-        $testClient->method('setAsync')->willReturnSelf();
 
         $testClient
             ->expects($this->once())
@@ -350,7 +346,7 @@ final class DocumentManagerTest extends TestCase
                 ],
             ])
             ->willReturn(
-                $this->createMock(Elasticsearch::class)
+                $this->createMock(FutureArrayInterface::class)
             );
 
         $clientBuilder = $this->createMock(ClientBuilderInterface::class);

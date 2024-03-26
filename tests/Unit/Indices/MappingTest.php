@@ -61,7 +61,11 @@ class MappingTest extends TestCase
         $mapping = (new Mapping())->dynamic('strict');
 
         $this->assertSame([
-            'dynamic' => 'strict',
+            'properties' => [
+                'strict' => [
+                    'type' => 'dynamic',
+                ],
+            ],
         ], $mapping->toArray());
     }
 
